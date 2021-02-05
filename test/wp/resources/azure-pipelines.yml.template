@@ -1,0 +1,42 @@
+pool:
+  vmImage: 'Ubuntu-18.04'
+
+trigger:
+  branches:
+    include:
+      - master
+
+variables:
+  imageName: 'wp-cloud-init'
+  wpVersion: '{{ wp_version }}'
+# DO NOT INLINE! Or you'll break docker-update-scan!!!!111
+
+steps:
+  - script: |
+      wget "https://github.com/hadolint/hadolint/releases/download/v1.18.0/hadolint-Linux-x86_64" -O hadolint
+      chmod +x hadolint
+      ./hadolint -c .hadolint.yaml Dockerfile
+      exit $?
+    displayName: 'Dockerfile Linternazi'
+
+  - task: Docker@2
+    inputs:
+      containerRegistry: 'hmgservices'
+      repository: '$(imageName)'
+      command: 'build'
+      Dockerfile: '**/Dockerfile'
+      arguments: '--progress=plain --build-arg VERSION="$(wpVersion)"'
+      tags: |
+        $(Build.BuildNumber)
+        $(wpVersion)
+        latest
+
+  - task: Docker@2
+    inputs:
+      containerRegistry: 'hmgservices'
+      repository: '$(imageName)'
+      command: 'push'
+      tags: |
+        $(Build.BuildNumber)
+        $(wpVersion)
+        latest

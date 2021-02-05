@@ -1,0 +1,4 @@
+mockito>=1.0.12
+requests==2.23.0
+Jinja2>=2.11, <2.12
+packaging

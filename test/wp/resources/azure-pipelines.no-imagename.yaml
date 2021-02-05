@@ -1,0 +1,41 @@
+pool:
+  vmImage: 'Ubuntu-18.04'
+
+trigger:
+  branches:
+    include:
+      - master
+
+variables:
+  frontendVersion: '3.7'
+  INVALIDname: 'prj-infra-dummy'
+  debMirror: 'http://ftp.halifax.rwth-aachen.de/ubuntu'
+  DOCKER_BUILDKIT: 1
+
+steps:
+  - script: |
+      wget "https://github.com/hadolint/hadolint/releases/download/v1.17.5/hadolint-Linux-x86_64" -O hadolint
+      chmod +x hadolint
+      ./hadolint -c cue/.hadolint.yaml cue/Dockerfile
+      exit $?
+    displayName: 'Dockerfile Linternazi'
+
+  - task: Docker@2
+    inputs:
+      containerRegistry: 'orgprj'
+      repository: '$(INVALIDname)'
+      command: 'build'
+      Dockerfile: '**/Dockerfile'
+      tags: |
+        $(frontendVersion)
+        $(Build.BuildNumber)
+      arguments: '--progress=plain --build-arg MIRROR="$(debMirror)" --build-arg FE_VERSION="$(frontendVersion)" --secret id=aptsecret,src=apt-auth.conf'
+
+  - task: Docker@2
+    inputs:
+      containerRegistry: 'orgprj'
+      repository: '$(INVALIDname)'
+      command: 'push'
+      tags: |
+        $(frontendVersion)
+        $(Build.BuildNumber)

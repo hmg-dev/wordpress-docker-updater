@@ -1,0 +1,14 @@
+{
+  "plugins": [
+    {
+      "download": "https://downloads.wordpress.org/plugin/classic-editor.1.5.zip",
+      "version": "1.5",
+      "key": "classic-editor/classic-editor.php"
+    },
+    {
+      "download": "https://downloads.wordpress.org/plugin/cookie-notice.1.3.2.zip",
+      "version": "1.3.2",
+      "key": "cookie-notice/cookie-notice.php"
+    }
+  ]
+}

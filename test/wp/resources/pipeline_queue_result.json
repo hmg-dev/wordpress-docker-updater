@@ -1,0 +1,138 @@
+{
+  "_links": {
+    "self": {
+      "href": "https://dev.azure.com/organization/00000000-aaaa-aaaa-aaaa-000000000000/_apis/build/Builds/26624"
+    },
+    "web": {
+      "href": "https://dev.azure.com/organization/00000000-aaaa-aaaa-aaaa-000000000000/_build/results?buildId=26624"
+    },
+    "sourceVersionDisplayUri": {
+      "href": "https://dev.azure.com/organization/00000000-aaaa-aaaa-aaaa-000000000000/_apis/build/builds/26624/sources"
+    },
+    "timeline": {
+      "href": "https://dev.azure.com/organization/00000000-aaaa-aaaa-aaaa-000000000000/_apis/build/builds/26624/Timeline"
+    },
+    "badge": {
+      "href": "https://dev.azure.com/organization/00000000-aaaa-aaaa-aaaa-000000000000/_apis/build/status/98"
+    }
+  },
+  "properties": {},
+  "tags": [],
+  "validationResults": [],
+  "plans": [
+    {
+      "planId": "00000000-aaaa-aaaa-aaaa-000000000000"
+    }
+  ],
+  "triggerInfo": {},
+  "id": 26624,
+  "buildNumber": "20200512.1",
+  "status": "notStarted",
+  "queueTime": "2020-05-12T11:25:30.5381679Z",
+  "url": "https://dev.azure.com/organization/00000000-aaaa-aaaa-aaaa-000000000000/_apis/build/Builds/26624",
+  "definition": {
+    "drafts": [],
+    "id": 98,
+    "name": "wordpress-docker-updater",
+    "url": "https://dev.azure.com/organization/00000000-aaaa-aaaa-aaaa-000000000000/_apis/build/Definitions/98?revision=1",
+    "uri": "vstfs:///Build/Definition/98",
+    "path": "\\",
+    "type": "build",
+    "queueStatus": "enabled",
+    "revision": 1,
+    "project": {
+      "id": "00000000-aaaa-aaaa-aaaa-000000000001",
+      "name": "PRJ",
+      "description": "Our awesome project",
+      "url": "https://dev.azure.com/organization/_apis/projects/00000000-aaaa-aaaa-aaaa-000000000001",
+      "state": "wellFormed",
+      "revision": 456,
+      "visibility": "private",
+      "lastUpdateTime": "2020-03-12T10:11:56.603Z"
+    }
+  },
+  "buildNumberRevision": 1,
+  "project": {
+    "id": "00000000-aaaa-aaaa-aaaa-000000000001",
+    "name": "PRJ",
+    "description": "Our awesome project",
+    "url": "https://dev.azure.com/organization/_apis/projects/00000000-aaaa-aaaa-aaaa-000000000001",
+    "state": "wellFormed",
+    "revision": 456,
+    "visibility": "private",
+    "lastUpdateTime": "2020-03-12T10:11:56.603Z"
+  },
+  "uri": "vstfs:///Build/Build/26624",
+  "sourceBranch": "refs/heads/master",
+  "sourceVersion": "9462c95e192ffb5b4ec5ed91cceffd5a34731648",
+  "queue": {
+    "id": 165,
+    "name": "Hosted Ubuntu 1604",
+    "pool": {
+      "id": 8,
+      "name": "Hosted Ubuntu 1604",
+      "isHosted": true
+    }
+  },
+  "priority": "normal",
+  "reason": "manual",
+  "requestedFor": {
+    "displayName": "CI-User",
+    "url": "https://spsprodweu3.vssps.visualstudio.com/00000000-aaaa-aaaa-aaaa-000000000000/_apis/Identities/00000000-aaaa-aaaa-aaaa-000000000000",
+    "_links": {
+      "avatar": {
+        "href": "https://dev.azure.com/organization/_apis/GraphProfile/MemberAvatars/aad.0000000000000000000000000000000000000"
+      }
+    },
+    "id": "00000000-aaaa-aaaa-aaaa-000000000000",
+    "uniqueName": "ciuser@organization.narf",
+    "imageUrl": "https://dev.azure.com/organization/_apis/GraphProfile/MemberAvatars/aad.0000000000000000000000000000000000000",
+    "descriptor": "aad.0000000000000000000000000000000000000"
+  },
+  "requestedBy": {
+    "displayName": "CI-User",
+    "url": "https://spsprodweu3.vssps.visualstudio.com/00000000-aaaa-aaaa-aaaa-000000000000/_apis/Identities/00000000-aaaa-aaaa-aaaa-000000000000",
+    "_links": {
+      "avatar": {
+        "href": "https://dev.azure.com/organization/_apis/GraphProfile/MemberAvatars/aad.0000000000000000000000000000000000000"
+      }
+    },
+    "id": "00000000-aaaa-aaaa-aaaa-000000000000",
+    "uniqueName": "ciuser@organization.narf",
+    "imageUrl": "https://dev.azure.com/organization/_apis/GraphProfile/MemberAvatars/aad.0000000000000000000000000000000000000",
+    "descriptor": "aad.0000000000000000000000000000000000000"
+  },
+  "lastChangedDate": "2020-05-12T11:25:31.167Z",
+  "lastChangedBy": {
+    "displayName": "CI-User",
+    "url": "https://spsprodweu3.vssps.visualstudio.com/00000000-aaaa-aaaa-aaaa-000000000000/_apis/Identities/00000000-aaaa-aaaa-aaaa-000000000000",
+    "_links": {
+      "avatar": {
+        "href": "https://dev.azure.com/organization/_apis/GraphProfile/MemberAvatars/aad.0000000000000000000000000000000000000"
+      }
+    },
+    "id": "00000000-aaaa-aaaa-aaaa-000000000000",
+    "uniqueName": "ciuser@organization.narf",
+    "imageUrl": "https://dev.azure.com/organization/_apis/GraphProfile/MemberAvatars/aad.0000000000000000000000000000000000000",
+    "descriptor": "aad.0000000000000000000000000000000000000"
+  },
+  "orchestrationPlan": {
+    "planId": "00000000-aaaa-aaaa-aaaa-000000000000"
+  },
+  "logs": {
+    "id": 0,
+    "type": "Container",
+    "url": "https://dev.azure.com/organization/00000000-aaaa-aaaa-aaaa-000000000000/_apis/build/builds/26624/logs"
+  },
+  "repository": {
+    "id": "00000000-aaaa-aaaa-aaaa-000000000002",
+    "type": "TfsGit",
+    "name": "dummy-docker-repo",
+    "url": "https://dev.azure.com/organization/PRJ/_git/dummy-docker-repo",
+    "clean": null,
+    "checkoutSubmodules": false
+  },
+  "keepForever": false,
+  "retainedByRelease": false,
+  "triggeredByBuild": null
+}

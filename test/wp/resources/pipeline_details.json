@@ -1,0 +1,70 @@
+{
+  "count": 1,
+  "value": [
+    {
+      "_links": {
+        "self": {
+          "href": "https://dev.azure.com/organization/00000000-aaaa-aaaa-aaaa-000000000000/_apis/build/Definitions/91?revision=3"
+        },
+        "web": {
+          "href": "https://dev.azure.com/organization/00000000-aaaa-aaaa-aaaa-000000000000/_build/definition?definitionId=91"
+        },
+        "editor": {
+          "href": "https://dev.azure.com/organization/00000000-aaaa-aaaa-aaaa-000000000000/_build/designer?id=91&_a=edit-build-definition"
+        },
+        "badge": {
+          "href": "https://dev.azure.com/organization/00000000-aaaa-aaaa-aaaa-000000000000/_apis/build/status/91"
+        }
+      },
+      "quality": "definition",
+      "authoredBy": {
+        "displayName": "Awesome Developer",
+        "url": "https://spsprodweu3.vssps.visualstudio.com/00000000-aaaa-aaaa-aaaa-000000000000/_apis/Identities/00000000-aaaa-aaaa-aaaa-000000000000",
+        "_links": {
+          "avatar": {
+            "href": "https://dev.azure.com/organization/_apis/GraphProfile/MemberAvatars/aad.0000000000000000000000000000000000000"
+          }
+        },
+        "id": "930a4667-4c76-6dc3-be37-26022803ffc9",
+        "uniqueName": "Awesome.Developer@organization.narf",
+        "imageUrl": "https://dev.azure.com/organization/_apis/GraphProfile/MemberAvatars/aad.0000000000000000000000000000000000000",
+        "descriptor": "aad.0000000000000000000000000000000000000"
+      },
+      "drafts": [],
+      "queue": {
+        "_links": {
+          "self": {
+            "href": "https://dev.azure.com/organization/_apis/build/Queues/165"
+          }
+        },
+        "id": 165,
+        "name": "Hosted Ubuntu 1604",
+        "url": "https://dev.azure.com/organization/_apis/build/Queues/165",
+        "pool": {
+          "id": 8,
+          "name": "Hosted Ubuntu 1604",
+          "isHosted": true
+        }
+      },
+      "id": 91,
+      "name": "infra-docker-dummy",
+      "url": "https://dev.azure.com/organization/00000000-aaaa-aaaa-aaaa-000000000000/_apis/build/Definitions/42?revision=3",
+      "uri": "vstfs:///Build/Definition/42",
+      "path": "\\",
+      "type": "build",
+      "queueStatus": "enabled",
+      "revision": 3,
+      "createdDate": "2020-03-24T09:46:56.453Z",
+      "project": {
+        "id": "00000000-aaaa-aaaa-aaaa-000000000001",
+        "name": "PRJ",
+        "description": "Our awesome project",
+        "url": "https://dev.azure.com/organization/_apis/projects/00000000-aaaa-aaaa-aaaa-000000000001",
+        "state": "wellFormed",
+        "revision": 42,
+        "visibility": "private",
+        "lastUpdateTime": "2020-03-12T10:11:56.603Z"
+      }
+    }
+  ]
+}

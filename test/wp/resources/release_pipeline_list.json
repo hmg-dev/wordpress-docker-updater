@@ -1,0 +1,55 @@
+{
+  "count": 1,
+  "value": [
+    {
+      "source": "userInterface",
+      "revision": 3,
+      "description": null,
+      "createdBy": {
+        "displayName": "Awesome Developer",
+        "url": "https://spsprodweu3.vssps.visualstudio.com/00000000-aaaa-aaaa-aaaa-000000000000/_apis/Identities/00000000-aaaa-aaaa-aaaa-000000000000",
+        "_links": {
+          "avatar": {
+            "href": "https://dev.azure.com/organization/_apis/GraphProfile/MemberAvatars/aad.0000000000000000000000000000000000000"
+          }
+        },
+        "id": "00000000-aaaa-aaaa-aaaa-000000000000",
+        "uniqueName": "ciuser@organization.narf",
+        "imageUrl": "https://dev.azure.com/organization/_apis/GraphProfile/MemberAvatars/aad.0000000000000000000000000000000000000",
+        "descriptor": "aad.0000000000000000000000000000000000000"
+      },
+      "createdOn": "2020-07-16T08:26:37.477Z",
+      "modifiedBy": {
+        "displayName": "Awesome Developer",
+        "url": "https://spsprodweu3.vssps.visualstudio.com/00000000-aaaa-aaaa-aaaa-000000000000/_apis/Identities/00000000-aaaa-aaaa-aaaa-000000000000",
+        "_links": {
+          "avatar": {
+            "href": "https://dev.azure.com/organization/_apis/GraphProfile/MemberAvatars/aad.0000000000000000000000000000000000000"
+          }
+        },
+        "id": "00000000-aaaa-aaaa-aaaa-000000000000",
+        "uniqueName": "ciuser@organization.narf",
+        "imageUrl": "https://dev.azure.com/organization/_apis/GraphProfile/MemberAvatars/aad.0000000000000000000000000000000000000",
+        "descriptor": "aad.0000000000000000000000000000000000000"
+      },
+      "modifiedOn": "2020-07-16T09:05:26.54Z",
+      "isDeleted": false,
+      "variableGroups": null,
+      "releaseNameFormat": "Release-$(rev:r)",
+      "properties": {},
+      "id": 68,
+      "name": "Setup Wordpress DB",
+      "path": "\\wp-cloud",
+      "projectReference": null,
+      "url": "https://vsrm.dev.azure.com/organization/00000000-aaaa-aaaa-aaaa-000000000000/_apis/Release/definitions/68",
+      "_links": {
+        "self": {
+          "href": "https://vsrm.dev.azure.com/organization/00000000-aaaa-aaaa-aaaa-000000000000/_apis/Release/definitions/68"
+        },
+        "web": {
+          "href": "https://dev.azure.com/organization/00000000-aaaa-aaaa-aaaa-000000000000/_release?definitionId=68"
+        }
+      }
+    }
+  ]
+}

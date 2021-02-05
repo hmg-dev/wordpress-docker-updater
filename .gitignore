@@ -1,0 +1,8 @@
+.idea
+venv
+__pycache__/
+config_local.py
+config_tmpl.py
+.coverage
+coverage.xml
+**/_trial_temp/

@@ -1,0 +1,26 @@
+{
+  "plugins": {
+    "classic-editor\/classic-editor.php": {
+      "id": "w.org\/plugins\/classic-editor",
+      "slug": "classic-editor",
+      "plugin": "classic-editor\/classic-editor.php",
+      "new_version": "1.6",
+      "url": "https:\/\/wordpress.org\/plugins\/classic-editor\/",
+      "package": "https:\/\/downloads.wordpress.org\/plugin\/classic-editor.1.6.zip",
+      "icons": {
+        "2x": "https:\/\/ps.w.org\/classic-editor\/assets\/icon-256x256.png?rev=1998671",
+        "1x": "https:\/\/ps.w.org\/classic-editor\/assets\/icon-128x128.png?rev=1998671"
+      },
+      "banners": {
+        "2x": "https:\/\/ps.w.org\/classic-editor\/assets\/banner-1544x500.png?rev=1998671",
+        "1x": "https:\/\/ps.w.org\/classic-editor\/assets\/banner-772x250.png?rev=1998676"
+      },
+      "banners_rtl": [],
+      "tested": "5.5",
+      "requires_php": "5.2.4",
+      "compatibility": []
+    }
+  },
+  "translations": [],
+  "no_update": []
+}

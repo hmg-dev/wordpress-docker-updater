@@ -1,0 +1,407 @@
+{
+  "id": 27253,
+  "name": "Release-10",
+  "status": "active",
+  "createdOn": "2020-07-30T11:01:02.66Z",
+  "modifiedOn": "2020-07-30T11:01:02.66Z",
+  "modifiedBy": {
+    "displayName": "ciuser",
+    "url": "https://spsprodweu3.vssps.visualstudio.com/00000000-aaaa-aaaa-aaaa-000000000000/_apis/Identities/00000000-aaaa-aaaa-aaaa-000000000000",
+    "_links": {
+      "avatar": {
+        "href": "https://dev.azure.com/organization/_apis/GraphProfile/MemberAvatars/aad.0000000000000000000000000000000000000"
+      }
+    },
+    "id": "00000000-aaaa-aaaa-aaaa-000000000000",
+    "uniqueName": "ciuser@organization.narf",
+    "imageUrl": "https://dev.azure.com/organization/_apis/GraphProfile/MemberAvatars/aad.0000000000000000000000000000000000000",
+    "descriptor": "aad.0000000000000000000000000000000000000"
+  },
+  "createdBy": {
+    "displayName": "ciuser",
+    "url": "https://spsprodweu3.vssps.visualstudio.com/00000000-aaaa-aaaa-aaaa-000000000000/_apis/Identities/00000000-aaaa-aaaa-aaaa-000000000000",
+    "_links": {
+      "avatar": {
+        "href": "https://dev.azure.com/organization/_apis/GraphProfile/MemberAvatars/aad.0000000000000000000000000000000000000"
+      }
+    },
+    "id": "00000000-aaaa-aaaa-aaaa-000000000000",
+    "uniqueName": "ciuser@organization.narf",
+    "imageUrl": "https://dev.azure.com/organization/_apis/GraphProfile/MemberAvatars/aad.0000000000000000000000000000000000000",
+    "descriptor": "aad.0000000000000000000000000000000000000"
+  },
+  "createdFor": {
+    "displayName": "ciuser",
+    "url": "https://spsprodweu3.vssps.visualstudio.com/00000000-aaaa-aaaa-aaaa-000000000000/_apis/Identities/00000000-aaaa-aaaa-aaaa-000000000000",
+    "_links": {
+      "avatar": {
+        "href": "https://dev.azure.com/organization/_apis/GraphProfile/MemberAvatars/aad.0000000000000000000000000000000000000"
+      }
+    },
+    "id": "00000000-aaaa-aaaa-aaaa-000000000000",
+    "uniqueName": "ciuser@organization.narf",
+    "imageUrl": "https://dev.azure.com/organization/_apis/GraphProfile/MemberAvatars/aad.0000000000000000000000000000000000000",
+    "descriptor": "aad.0000000000000000000000000000000000000"
+  },
+  "environments": [
+    {
+      "id": 27409,
+      "releaseId": 27253,
+      "name": "Stage 1",
+      "status": "notStarted",
+      "variables": {},
+      "variableGroups": [],
+      "preDeployApprovals": [],
+      "postDeployApprovals": [],
+      "preApprovalsSnapshot": {
+        "approvals": [
+          {
+            "rank": 1,
+            "isAutomated": true,
+            "isNotificationOn": false,
+            "id": 0
+          }
+        ],
+        "approvalOptions": {
+          "requiredApproverCount": null,
+          "releaseCreatorCanBeApprover": false,
+          "autoTriggeredAndPreviousEnvironmentApprovedCanBeSkipped": false,
+          "enforceIdentityRevalidation": false,
+          "timeoutInMinutes": 0,
+          "executionOrder": "beforeGates"
+        }
+      },
+      "postApprovalsSnapshot": {
+        "approvals": [
+          {
+            "rank": 1,
+            "isAutomated": true,
+            "isNotificationOn": false,
+            "id": 0
+          }
+        ],
+        "approvalOptions": {
+          "requiredApproverCount": null,
+          "releaseCreatorCanBeApprover": false,
+          "autoTriggeredAndPreviousEnvironmentApprovedCanBeSkipped": false,
+          "enforceIdentityRevalidation": false,
+          "timeoutInMinutes": 0,
+          "executionOrder": "afterSuccessfulGates"
+        }
+      },
+      "deploySteps": [],
+      "rank": 1,
+      "definitionEnvironmentId": 95,
+      "environmentOptions": {
+        "emailNotificationType": "OnlyOnFailure",
+        "emailRecipients": "release.environment.owner;release.creator",
+        "skipArtifactsDownload": false,
+        "timeoutInMinutes": 0,
+        "enableAccessToken": false,
+        "publishDeploymentStatus": true,
+        "badgeEnabled": false,
+        "autoLinkWorkItems": false,
+        "pullRequestDeploymentEnabled": false
+      },
+      "demands": [],
+      "conditions": [
+        {
+          "result": true,
+          "name": "ReleaseStarted",
+          "conditionType": "event",
+          "value": ""
+        }
+      ],
+      "workflowTasks": [],
+      "deployPhasesSnapshot": [
+        {
+          "deploymentInput": {
+            "parallelExecution": {
+              "parallelExecutionType": "none"
+            },
+            "agentSpecification": {
+              "identifier": "ubuntu-18.04"
+            },
+            "skipArtifactsDownload": false,
+            "artifactsDownloadInput": {
+              "downloadInputs": []
+            },
+            "queueId": 116,
+            "demands": [],
+            "enableAccessToken": false,
+            "timeoutInMinutes": 0,
+            "jobCancelTimeoutInMinutes": 1,
+            "condition": "succeeded()",
+            "overrideInputs": {}
+          },
+          "rank": 1,
+          "phaseType": "agentBasedDeployment",
+          "name": "Agent job",
+          "refName": null,
+          "workflowTasks": [
+            {
+              "environment": {},
+              "taskId": "00000000-aaaa-aaaa-aaaa-000000000000",
+              "version": "1.*",
+              "name": "Azure Key Vault: prj-keyvault",
+              "refName": "",
+              "enabled": true,
+              "alwaysRun": false,
+              "continueOnError": false,
+              "timeoutInMinutes": 0,
+              "definitionType": "task",
+              "overrideInputs": {},
+              "condition": "succeeded()",
+              "inputs": {
+                "ConnectedServiceName": "00000000-aaaa-aaaa-aaaa-000000000000",
+                "KeyVaultName": "prj-keyvault",
+                "SecretsFilter": "*",
+                "RunAsPreJob": "false"
+              }
+            },
+            {
+              "environment": {},
+              "taskId": "00000000-aaaa-aaaa-aaaa-000000000000",
+              "version": "3.*",
+              "name": "Replace tokens in **/secret.yaml",
+              "refName": "",
+              "enabled": true,
+              "alwaysRun": false,
+              "continueOnError": false,
+              "timeoutInMinutes": 0,
+              "definitionType": "task",
+              "overrideInputs": {},
+              "condition": "succeeded()",
+              "inputs": {
+                "rootDirectory": "",
+                "targetFiles": "**/secret.yaml",
+                "encoding": "auto",
+                "writeBOM": "false",
+                "escapeType": "auto",
+                "escapeChar": "",
+                "charsToEscape": "",
+                "verbosity": "normal",
+                "actionOnMissing": "warn",
+                "keepToken": "false",
+                "tokenPrefix": "#{",
+                "tokenSuffix": "}#",
+                "useLegacyPattern": "false",
+                "emptyValue": "(empty)",
+                "variableFiles": "",
+                "variableSeparator": ".",
+                "enableTelemetry": "true"
+              }
+            },
+            {
+              "environment": {},
+              "taskId": "00000000-aaaa-aaaa-aaaa-000000000000",
+              "version": "1.*",
+              "name": "kubectl apply",
+              "refName": "",
+              "enabled": true,
+              "alwaysRun": false,
+              "continueOnError": false,
+              "timeoutInMinutes": 0,
+              "definitionType": "task",
+              "overrideInputs": {},
+              "condition": "succeeded()",
+              "inputs": {
+                "connectionType": "Kubernetes Service Connection",
+                "kubernetesServiceEndpoint": "00000000-aaaa-aaaa-aaaa-000000000000",
+                "azureSubscriptionEndpoint": "",
+                "azureResourceGroup": "",
+                "kubernetesCluster": "",
+                "useClusterAdmin": "false",
+                "namespace": "wp-hosting",
+                "command": "apply",
+                "useConfigurationFile": "true",
+                "configurationType": "configuration",
+                "configuration": "$(System.DefaultWorkingDirectory)/_wp-cloud-k8s",
+                "inline": "",
+                "arguments": "",
+                "secretType": "dockerRegistry",
+                "secretArguments": "",
+                "containerRegistryType": "Azure Container Registry",
+                "dockerRegistryEndpoint": "",
+                "azureSubscriptionEndpointForSecrets": "",
+                "azureContainerRegistry": "",
+                "secretName": "",
+                "forceUpdate": "true",
+                "configMapName": "",
+                "forceUpdateConfigMap": "false",
+                "useConfigMapFile": "false",
+                "configMapFile": "",
+                "configMapArguments": "",
+                "versionOrLocation": "version",
+                "versionSpec": "1.13.2",
+                "checkLatest": "false",
+                "specifyLocation": "",
+                "cwd": "$(System.DefaultWorkingDirectory)",
+                "outputFormat": "json"
+              }
+            }
+          ]
+        }
+      ],
+      "owner": {
+        "displayName": "Awesome Developer",
+        "url": "https://spsprodweu3.vssps.visualstudio.com/00000000-aaaa-aaaa-aaaa-000000000000/_apis/Identities/00000000-aaaa-aaaa-aaaa-000000000000",
+        "_links": {
+          "avatar": {
+            "href": "https://dev.azure.com/organization/_apis/GraphProfile/MemberAvatars/aad.0000000000000000000000000000000000000"
+          }
+        },
+        "id": "00000000-aaaa-aaaa-aaaa-000000000000",
+        "uniqueName": "ciuser@organization.narf",
+        "imageUrl": "https://dev.azure.com/organization/_apis/GraphProfile/MemberAvatars/aad.0000000000000000000000000000000000000",
+        "descriptor": "aad.0000000000000000000000000000000000000"
+      },
+      "schedules": [],
+      "release": {
+        "id": 27253,
+        "name": "Release-10",
+        "url": "https://vsrm.dev.azure.com/organization/00000000-aaaa-aaaa-aaaa-000000000000/_apis/Release/releases/27253",
+        "_links": {
+          "web": {
+            "href": "https://dev.azure.com/organization/00000000-aaaa-aaaa-aaaa-000000000000/_release?releaseId=27253&_a=release-summary"
+          },
+          "self": {
+            "href": "https://vsrm.dev.azure.com/organization/00000000-aaaa-aaaa-aaaa-000000000000/_apis/Release/releases/27253"
+          }
+        }
+      },
+      "releaseDefinition": {
+        "id": 69,
+        "name": "Deploy Wordpress",
+        "path": "\\wp-cloud",
+        "projectReference": null,
+        "url": "https://vsrm.dev.azure.com/organization/00000000-aaaa-aaaa-aaaa-000000000000/_apis/Release/definitions/69",
+        "_links": {
+          "web": {
+            "href": "https://dev.azure.com/organization/00000000-aaaa-aaaa-aaaa-000000000000/_release?definitionId=69"
+          },
+          "self": {
+            "href": "https://vsrm.dev.azure.com/organization/00000000-aaaa-aaaa-aaaa-000000000000/_apis/Release/definitions/69"
+          }
+        }
+      },
+      "releaseCreatedBy": {
+        "displayName": "ciuser",
+        "url": "https://spsprodweu3.vssps.visualstudio.com/00000000-aaaa-aaaa-aaaa-000000000000/_apis/Identities/00000000-aaaa-aaaa-aaaa-000000000000",
+        "_links": {
+          "avatar": {
+            "href": "https://dev.azure.com/organization/_apis/GraphProfile/MemberAvatars/aad.0000000000000000000000000000000000000"
+          }
+        },
+        "id": "00000000-aaaa-aaaa-aaaa-000000000000",
+        "uniqueName": "ciuser@organization.narf",
+        "imageUrl": "https://dev.azure.com/organization/_apis/GraphProfile/MemberAvatars/aad.0000000000000000000000000000000000000",
+        "descriptor": "aad.0000000000000000000000000000000000000"
+      },
+      "triggerReason": "ReleaseStarted",
+      "processParameters": {},
+      "preDeploymentGatesSnapshot": {
+        "id": 0,
+        "gatesOptions": null,
+        "gates": []
+      },
+      "postDeploymentGatesSnapshot": {
+        "id": 0,
+        "gatesOptions": null,
+        "gates": []
+      }
+    }
+  ],
+  "variables": {},
+  "variableGroups": [],
+  "artifacts": [
+    {
+      "sourceId": "00000000-aaaa-aaaa-aaaa-000000000000:00000000-aaaa-aaaa-aaaa-000000000000",
+      "type": "Git",
+      "alias": "_wp-cloud-k8s",
+      "definitionReference": {
+        "branches": {
+          "id": "master",
+          "name": "master"
+        },
+        "checkoutNestedSubmodules": {
+          "id": "True",
+          "name": "Any nested submodules within"
+        },
+        "checkoutSubmodules": {
+          "id": "",
+          "name": ""
+        },
+        "definition": {
+          "id": "00000000-aaaa-aaaa-aaaa-000000000000",
+          "name": "wp-cloud-k8s"
+        },
+        "fetchDepth": {
+          "id": "",
+          "name": ""
+        },
+        "gitLfsSupport": {
+          "id": "",
+          "name": ""
+        },
+        "project": {
+          "id": "00000000-aaaa-aaaa-aaaa-000000000000",
+          "name": "PRJ"
+        },
+        "version": {
+          "id": "3e342b7be00a29d25397711d559e397d36446146",
+          "name": "3e342b7b"
+        },
+        "branch": {
+          "id": "master",
+          "name": "master"
+        }
+      },
+      "isPrimary": true,
+      "isRetained": false
+    }
+  ],
+  "releaseDefinition": {
+    "id": 69,
+    "name": "Deploy Wordpress",
+    "path": "\\wp-cloud",
+    "projectReference": null,
+    "url": "https://vsrm.dev.azure.com/organization/00000000-aaaa-aaaa-aaaa-000000000000/_apis/Release/definitions/69",
+    "_links": {
+      "self": {
+        "href": "https://vsrm.dev.azure.com/organization/00000000-aaaa-aaaa-aaaa-000000000000/_apis/Release/definitions/69"
+      },
+      "web": {
+        "href": "https://dev.azure.com/organization/00000000-aaaa-aaaa-aaaa-000000000000/_release?definitionId=69"
+      }
+    }
+  },
+  "releaseDefinitionRevision": 3,
+  "description": "test release api",
+  "reason": "manual",
+  "releaseNameFormat": "Release-$(rev:r)",
+  "keepForever": false,
+  "definitionSnapshotRevision": 1,
+  "logsContainerUrl": "https://vsrm.dev.azure.com/organization/00000000-aaaa-aaaa-aaaa-000000000000/_apis/Release/releases/27253/logs",
+  "url": "https://vsrm.dev.azure.com/organization/00000000-aaaa-aaaa-aaaa-000000000000/_apis/Release/releases/27253",
+  "_links": {
+    "self": {
+      "href": "https://vsrm.dev.azure.com/organization/00000000-aaaa-aaaa-aaaa-000000000000/_apis/Release/releases/27253"
+    },
+    "web": {
+      "href": "https://dev.azure.com/organization/00000000-aaaa-aaaa-aaaa-000000000000/_release?releaseId=27253&_a=release-summary"
+    }
+  },
+  "tags": [],
+  "triggeringArtifactAlias": null,
+  "projectReference": {
+    "id": "00000000-aaaa-aaaa-aaaa-000000000000",
+    "name": null
+  },
+  "properties": {
+    "DownloadBuildArtifactsUsingTask": {
+      "$type": "System.String",
+      "$value": "True"
+    }
+  }
+}

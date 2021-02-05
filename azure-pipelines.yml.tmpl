@@ -1,0 +1,58 @@
+pool:
+  vmImage: 'Ubuntu-18.04'
+
+trigger:
+  branches:
+    include:
+      - master
+
+variables:
+  imageName: 'wordpress-docker-updater'
+  acrName: 'mycontainerreg'
+
+steps:
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '3.8'
+
+  - script: python -m pip install --upgrade pip coverage
+    displayName: 'Install or upgrade pip and test-coverage tool'
+
+  - script: pip install -r requirements.txt
+    displayName: 'Install requirements'
+
+  - script: python -m unittest discover . "*_test.py"
+    displayName: 'run unit-tests'
+
+  - task: Docker@2
+    inputs:
+      containerRegistry: '$(acrName)'
+      repository: '$(imageName)'
+      command: 'build'
+      Dockerfile: '**/Dockerfile'
+      tags: |
+        $(Build.BuildNumber)
+        latest
+
+  - task: Docker@2
+    inputs:
+      containerRegistry: '$(acrName)'
+      repository: '$(imageName)'
+      command: 'push'
+      tags: |
+        $(Build.BuildNumber)
+        latest
+
+  - script: coverage run --branch --source=wp -m unittest discover . "*_test.py"
+    displayName: 'determine unit-tests coverage'
+
+  - script: coverage xml
+    displayName: 'generate coverage-report'
+
+  - task: SonarQubePrepare@4
+    inputs:
+      SonarQube: 'sonar-qube'
+      scannerMode: 'CLI'
+      configMode: 'file'
+
+  - task: SonarQubeAnalyze@4
