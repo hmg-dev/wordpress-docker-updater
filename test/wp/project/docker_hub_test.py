@@ -29,6 +29,7 @@ class DockerHubTest(unittest.TestCase):
         unittest.TestCase.setUp(self)
         self.dummy_image_name = "wordpress"
         self.expected_uri = f"https://hub.docker.com/v2/repositories/library/{self.dummy_image_name}/tags?page_size=100"
+        self.expected_uri2 = "https://hub.docker.com/v2/repositories/library/wordpress/tags?page=2&page_size=100"
 
     def tearDown(self) -> None:
         unittest.TestCase.tearDown(self)
@@ -49,20 +50,19 @@ class DockerHubTest(unittest.TestCase):
     def test_fetch_tags(self):
         with open(os.path.dirname(__file__) + "/../resources/wordpress-tag-list.json", 'r') as f:
             dummy_response = f.read()
+        with open(os.path.dirname(__file__) + "/../resources/wordpress-tag-list_lastpage.json", 'r') as f:
+            dummy_response_last = f.read()
 
-        expected_tag_amount = 1058
-        response = mock({
-            "status_code": 200,
-            "text": dummy_response
-        }, spec=requests.Response)
-        when(requests).get(ANY(str)).thenReturn(response)
+        response = mock({"status_code": 200, "text": dummy_response}, spec=requests.Response)
+        response2 = mock({"status_code": 200, "text": dummy_response_last}, spec=requests.Response)
+        when(requests).get(ANY(str)).thenReturn(response, response2)
 
         result = sut.fetch_tags(self.dummy_image_name)
         self.assertIsNotNone(result)
-        self.assertEqual(expected_tag_amount, result["count"])
-        self.assertEqual(100, len(result["results"]))
+        self.assertEqual(200, len(result))
 
         verify(requests, times=1).get(self.expected_uri)
+        verify(requests, times=1).get(self.expected_uri2)
 
     def test_filter_tags(self):
         name_filter = "apache"
@@ -70,7 +70,7 @@ class DockerHubTest(unittest.TestCase):
         with open(os.path.dirname(__file__) + "/../resources/wordpress-tag-list.json", 'r') as f:
             dummy_tags = json.loads(f.read())
 
-        result = sut.filter_tags(dummy_tags, name_filter)
+        result = sut.filter_tags(dummy_tags["results"], name_filter)
         self.assertIsNotNone(result)
         self.assertEqual(expected_results, len(result))
 
@@ -80,7 +80,7 @@ class DockerHubTest(unittest.TestCase):
         with open(os.path.dirname(__file__) + "/../resources/wordpress-tag-list.json", 'r') as f:
             dummy_tags = json.loads(f.read())
 
-        result = sut.filter_tags_regex(dummy_tags, name_filter)
+        result = sut.filter_tags_regex(dummy_tags["results"], name_filter)
         self.assertIsNotNone(result)
         self.assertEqual(expected_results, len(result))
 

@@ -24,14 +24,22 @@ from packaging.version import parse
 
 def fetch_tags(image_name):
     url = _build_request_uri(image_name)
+    return _fetch_tags(url)
 
+
+def _fetch_tags(url):
     print(f"request to: {url}")
     response = requests.get(url)
 
     if response.status_code != 200:
         raise RuntimeError(f"Request to '{url}' failed! Got status code: {response.status_code}")
 
-    return json.loads(response.text)
+    json_data = json.loads(response.text)
+    tag_list = json_data["results"]
+    if json_data.get("next") is not None:
+        tag_list += _fetch_tags(json_data.get("next"))
+
+    return tag_list
 
 
 def _build_request_uri(image_name):
@@ -39,20 +47,19 @@ def _build_request_uri(image_name):
     if "/" not in image_name:
         path = "library/" + image_name
 
-    # only fetches the latest 100 tags! default seems to be 10 now -.-
+    # only fetches the latest 100 tags! default seems to be 10
     # 100 is the maximum for parameter page_size
     # in order to fetch more tags, its necessary to do multiple requests with the parameter "page"
-    # but the last 100 tags should be enough for our requirements ...hopefully!
     return f"https://hub.docker.com/v2/repositories/{path}/tags?page_size=100"
 
 
 def filter_tags(tags, name_filter):
-    filtered_tags = [x for x in tags["results"] if name_filter in x['name']]
+    filtered_tags = [x for x in tags if name_filter in x['name']]
     return filtered_tags
 
 
 def filter_tags_regex(tags, name_filter):
-    filtered_tags = [x for x in tags["results"] if re.search(name_filter, x['name']) is not None]
+    filtered_tags = [x for x in tags if re.search(name_filter, x['name']) is not None]
     return filtered_tags
 
 
