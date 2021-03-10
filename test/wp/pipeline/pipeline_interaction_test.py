@@ -93,6 +93,7 @@ class PipelineTest(unittest.TestCase):
 
     def test_fetch_build_status_for_error(self):
         dummy_build_id = 36
+        expected_request_invocations = 3
         expected_url = f"{conf.azure_org}{self.dummy_project}/_apis/build/builds/{dummy_build_id}?api-version=5.1"
 
         response = mock({"status_code": 500, "text": "TEST ERROR"}, spec=requests.Response)
@@ -101,7 +102,7 @@ class PipelineTest(unittest.TestCase):
         result = self.sut.fetch_build_status(dummy_build_id)
         self.assertIsNone(result)
 
-        verify(requests, times=1).get(expected_url, headers=self.expected_headers, auth=self.expected_credentials)
+        verify(requests, times=expected_request_invocations).get(expected_url, headers=self.expected_headers, auth=self.expected_credentials)
 
     def test_fetch_build_status(self):
         dummy_build_id = 32174
@@ -143,6 +144,19 @@ class PipelineTest(unittest.TestCase):
         self.assertEqual("20200728.3", result["buildNumber"])
 
         verify(requests, times=1).get(expected_url, headers=self.expected_headers, auth=self.expected_credentials)
+
+    def test_fetch_most_recent_build_for_connection_error(self):
+        dummy_pipeline_id = 21
+        expected_request_invocations = 3
+        expected_url = f"{conf.azure_org}{self.dummy_project}/_apis/build/builds?api-version=5.1" \
+                       f"&definitions={dummy_pipeline_id}&$top=1&queryOrder=queueTimeDescending"
+        when(requests).get(ANY(), headers=ANY(), auth=ANY()).thenRaise(requests.exceptions.ConnectionError("TEST ERROR"))
+
+        result = self.sut.fetch_most_recent_build(dummy_pipeline_id)
+        self.assertIsNone(result)
+
+        verify(requests, times=expected_request_invocations).get(expected_url, headers=self.expected_headers,
+                                                                 auth=self.expected_credentials)
 
     def test_wait_for_build_pipeline(self):
         dummy_validation_result = {"id": 42, "name": self.dummy_pipeline_name}

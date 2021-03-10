@@ -21,6 +21,7 @@ import os
 import requests
 import urllib.parse
 from wp import config as conf
+from wp.pipeline import pipeline_interaction as pipe
 
 ENV_DEVOPS_PAT = "DEVOPS_PAT"
 HEADERS_JSON = {"Content-Type": "application/json", "Accept": "application/json"}
@@ -37,7 +38,7 @@ class ReleasePipeline(object):
         search_param = urllib.parse.quote(self.pipeline_name)
         url = f"{conf.azure_org_vs}{self.project}/_apis/release/definitions?api-version=5.1&searchText={search_param}"
 
-        response = requests.get(url, headers=HEADERS_JSON, auth=self.credentials)
+        response = pipe.request_retry(url, header=HEADERS_JSON, credentials=self.credentials)
         if response.status_code != 200:
             return None
 

@@ -28,6 +28,42 @@ ENV_DEVOPS_PAT = "DEVOPS_PAT"
 HEADERS_JSON = {"Content-Type": "application/json", "Accept": "application/json"}
 
 
+def request_retry(url, header=None, credentials=None, counter=3):
+    if counter <= 0:
+        response = SimpleResponse()
+        response.status_code = 503
+        response.simple_text = f"Retry-Limit exceeded: {counter}"
+        return response
+
+    counter = counter - 1
+    response = _http_get_request_no_throw(url, header, credentials)
+    if response.status_code != 200:
+        response = request_retry(url, header, credentials, counter)
+
+    return response
+
+
+def _http_get_request_no_throw(url, header=None, credentials=None):
+    try:
+        return requests.get(url, headers=header, auth=credentials)
+    except requests.exceptions.ConnectionError as e:
+        print(f"ERROR: {e}")
+        response = SimpleResponse()
+        response.status_code = 502
+        response.simple_text = f"ConnectionError: {e}"
+        return response
+
+
+class SimpleResponse(requests.models.Response):
+    def __init__(self):
+        self.simple_text = ""
+        super(SimpleResponse, self).__init__()
+
+    @property
+    def text(self):
+        return self.simple_text
+
+
 class Pipeline(object):
     def __init__(self, project, pipeline_name):
         self.project = project
@@ -38,7 +74,7 @@ class Pipeline(object):
         print(f"Validate Pipeline \"{self.pipeline_name}\" for project \"{self.project}\" ...")
         url = f"{conf.azure_org}{self.project}/_apis/build/definitions?api-version=5.1&name={self.pipeline_name}"
 
-        response = requests.get(url, headers=HEADERS_JSON, auth=self.credentials)
+        response = request_retry(url, header=HEADERS_JSON, credentials=self.credentials)
         if response.status_code != 200:
             return None
 
@@ -68,7 +104,7 @@ class Pipeline(object):
         print(f"fetch status of build {build_id} ...")
         url = f"{conf.azure_org}{self.project}/_apis/build/builds/{build_id}?api-version=5.1"
 
-        response = requests.get(url, headers=HEADERS_JSON, auth=self.credentials)
+        response = request_retry(url, header=HEADERS_JSON, credentials=self.credentials)
         if response.status_code != 200:
             print(f"ERROR: Unable to fetch build-status for build {build_id}")
             print(f"Response-Code: {response.status_code}"
@@ -84,10 +120,10 @@ class Pipeline(object):
         url = f"{conf.azure_org}{self.project}/_apis/build/builds?api-version=5.1" \
             f"&definitions={pipeline_id}&$top=1&queryOrder=queueTimeDescending"
 
-        response = requests.get(url, headers=HEADERS_JSON, auth=self.credentials)
+        response = request_retry(url, header=HEADERS_JSON, credentials=self.credentials)
         if response.status_code != 200:
             print(f"ERROR: Unable to fetch most recent build for pipeline {pipeline_id}")
-            print(f"Response-Code: {response.status_code}"
+            print(f"Response-Code: {response.status_code} "
                   f"Response-Text: {response.text}")
             return None
 
